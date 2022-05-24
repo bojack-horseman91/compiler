@@ -26,12 +26,15 @@ public:
     bool Delete(string Name);
 
     //getter FOR NEXT SCOPE ID
-    string getNextScopeID(){return this->ScopeID+to_string(nextScopeID++);}
+    string getNextScopeID(){return this->ScopeID+"."+to_string(nextScopeID++);}
     //GETTER AND SETTER FOR PARENT SCOPE TABLE
     void setParentScopeTable(ScopeTable* parent){
         parentScopeTable=parent;
     }
     ScopeTable* getParentScopeTable(){return parentScopeTable;}
+    string getID(){
+        return this->ScopeID;
+    }
 };
 
 

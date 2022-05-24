@@ -6,6 +6,7 @@ using namespace std;
 
 ScopeTable::ScopeTable(int NumberOfBucket ,string ScopeID)
 {
+    this->parentScopeTable=NULL;
     this->ScopeID=ScopeID;
     hashTable=new SymbolInfo*[NumberOfBucket];
     numberOfBucket=NumberOfBucket;
@@ -22,16 +23,16 @@ static unsigned long
 
         while (c = *str++)
             hash = c + (hash << 6) + (hash << 16) - hash;
-
+        cout<<"hash value:"<<hash<<endl;
         return hash;
     }
 
 int ScopeTable::hashf(string Name){
-    unsigned char trap[256];
+    unsigned char trap[Name.length()+1];
 
     copy( Name.begin(), Name.end(), trap );
     trap[Name.length()] = 0;
-    return  1% numberOfBucket;
+    return  sdbm(trap)% numberOfBucket;
 }
 
 
@@ -68,6 +69,7 @@ bool ScopeTable::Insert(SymbolInfo* symbol){
 
 }
 void ScopeTable::Print(){
+    cout<<"ScopeTable # "<<this->getID()<<endl;
     for(int i=0;i<numberOfBucket;i++){
         cout<<i<<" : ";
         if(hashTable[i]!=NULL){
@@ -79,19 +81,27 @@ void ScopeTable::Print(){
 ScopeTable::~ScopeTable()
 {
     delete[] hashTable;
-    cout<<"ScopeTable with id "<<ScopeID<<" removed";
+    
 }
 
 SymbolInfo* ScopeTable::LookUp(string Name ){
     int bucketNumber=this->hashf(Name);
     SymbolInfo* current=hashTable[bucketNumber];
-
-    if(current==NULL)return NULL;
+    int position=0;
+    if(current==NULL){
+        cout<<"Not found"<<Name<<endl;
+        return NULL;
+    }
     while(current!=NULL){
 
-        if(current->getName()==Name)return current;
+        if(current->getName()==Name){
+            cout<<"Found in ScopeTable# "<<ScopeID<<" at position "<<bucketNumber<<", "<<position;
+            return current;
+        }
         current=current->getNext();
+        position++;
     }
+    cout<<"Not found"<<Name<<endl;
     return NULL;
 }
 
@@ -104,7 +114,7 @@ bool ScopeTable::Delete(string Name){
     //cout<<bucketNumber<<endl;
     //cout<<head<<current<<hashTable[bucketNumber]<<endl;
     if(current==NULL){
-
+        cout<<"Not found"<<Name<<endl;
         return false;
     }
     while(current!=NULL){
@@ -117,13 +127,14 @@ bool ScopeTable::Delete(string Name){
             else
                 hashTable[bucketNumber]=NULL;
             current->~SymbolInfo();
+            cout<<"Deleted Entry "<<bucketNumber<<", "<<position<<" from current ScopeTable"<<endl;
             return true;
         }
 
         current=current->getNext();
         position++;
     }
-
+    cout<<"Not found"<<Name<<endl;
     return false;
 }
 
