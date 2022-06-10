@@ -1,0 +1,135 @@
+1<INT>
+1 <ID,main>
+*******************
+Inserted in ScopeTable# 1 at position 3, 0
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+1 <LPAREN,(>
+1 <RPAREN,)>
+1 <LCURL,{>
+2<INT>
+2 <ID,a>
+*******************
+Inserted in ScopeTable# 1.1 at position 7, 0
+ScopeTable # 1.1
+7 : < a : ID>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+2 <COMMA,,>
+2 <ID,b>
+*******************
+Inserted in ScopeTable# 1.1 at position 8, 0
+ScopeTable # 1.1
+7 : < a : ID>  
+8 : < b : ID>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+2 <SEMICOLON,;>
+3 <ID,a>
+< a : ID>  Already Exists
+3 <ASSIGNOP,=>
+3 <ID,a>
+< a : ID>  Already Exists
+3 <ADDOP,+>
+*******************
+Inserted in ScopeTable# 1.1 at position 9, 0
+ScopeTable # 1.1
+7 : < a : ID>  
+8 : < b : ID>  
+9 : < 1 : INT>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+3< CONST_INT,1> 
+3 <SEMICOLON,;>
+4<CHAR>
+4 <ID,ch>
+*******************
+Inserted in ScopeTable# 1.1 at position 5, 0
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  
+8 : < b : ID>  
+9 : < 1 : INT>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+4 <ASSIGNOP,=>
+4<CONST_CHAR,a>
+*******************
+Inserted in ScopeTable# 1.1 at position 7, 1
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  -< a : CONST_CHAR>  
+8 : < b : ID>  
+9 : < 1 : INT>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+4 <SEMICOLON,;>
+5 <ID,ch>
+< ch : ID>  Already Exists
+5 <ASSIGNOP,=>
+5<CONST_CHAR,	>
+*******************
+Inserted in ScopeTable# 1.1 at position 9, 1
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  -< a : CONST_CHAR>  
+8 : < b : ID>  
+9 : < 1 : INT>  -< 	 : CONST_CHAR>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+5 <SEMICOLON,;>
+6<CHAR>
+6 <ID,c>
+*******************
+Inserted in ScopeTable# 1.1 at position 9, 2
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  -< a : CONST_CHAR>  
+8 : < b : ID>  
+9 : < 1 : INT>  -< 	 : CONST_CHAR>  -< c : ID>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+6 <LTHIRD,[>
+6 <RTHIRD,]>
+6 <ASSIGNOP,=>
+6<STRING ,ab	d> 
+6 <SEMICOLON,;>
+7 <ID,printf>
+*******************
+Inserted in ScopeTable# 1.1 at position 9, 3
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  -< a : CONST_CHAR>  
+8 : < b : ID>  
+9 : < 1 : INT>  -< 	 : CONST_CHAR>  -< c : ID>  -< printf : ID>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+7 <LPAREN,(>
+9<STRING ,abcdefghi> 
+9 <RPAREN,)>
+9 <SEMICOLON,;>
+10<SINGLELINE_COMMENT, a comment> 
+12<MULTILINE_COMMENT, another comment > 
+13<RETURN>
+*******************
+Inserted in ScopeTable# 1.1 at position 8, 1
+ScopeTable # 1.1
+5 : < ch : ID>  
+7 : < a : ID>  -< a : CONST_CHAR>  
+8 : < b : ID>  -< 0 : INT>  
+9 : < 1 : INT>  -< 	 : CONST_CHAR>  -< c : ID>  -< printf : ID>  
+ScopeTable # 1
+3 : < main : ID>  
+*******************
+13< CONST_INT,0> 
+13 <SEMICOLON,;>
+14 <CURL,}>
